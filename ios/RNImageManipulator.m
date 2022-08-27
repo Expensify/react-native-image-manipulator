@@ -74,6 +74,7 @@ RCT_EXPORT_METHOD(manipulate:(NSString *)uri
               resolver:(RCTPromiseResolveBlock)resolve
               rejecter:(RCTPromiseRejectBlock)reject
 {
+  image = [ImageUtils fixOrientation:image];
   for (NSDictionary *options in actions) {
     if (options[@"resize"]) {
       float imageWidth = image.size.width;

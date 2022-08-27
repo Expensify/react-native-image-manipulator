@@ -6,4 +6,6 @@
 
 + (UIImage *)cropImage:(UIImage *)image toRect:(CGRect)rect;
 
++ (UIImage *)fixOrientation:(UIImage *)image;
+
 @end
