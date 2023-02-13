@@ -23,6 +23,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
+import com.facebook.imagepipeline.common.ImageDecodeOptions;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -53,6 +54,10 @@ public class RNImageManipulatorModule extends ReactContextBaseJavaModule {
         ImageRequestBuilder
             .newBuilderWithSource(Uri.parse(uriString))
             .setRotationOptions(RotationOptions.autoRotate())
+            .setImageDecodeOptions(
+                    ImageDecodeOptions.newBuilder()
+                            .setForceStaticImage(true)
+                            .build())
             .build();
     final DataSource<CloseableReference<CloseableImage>> dataSource
         = Fresco.getImagePipeline().fetchDecodedImage(imageRequest, getReactApplicationContext());
